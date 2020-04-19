@@ -1,18 +1,10 @@
 import React from 'react'
-import Head from 'next/head'
+import GlobalLayout from "../src/hoc/Layout/Global.layout";
 
-const Home = () => {
-    const f = 4;
-    return (
-        <>
-            <Head>
-                <title>Home page {f}</title>
-            </Head>
-            <div>
-                <h1>Home page</h1>
-            </div>
-        </>
-    )
-}
+const HomePageComponent = () => (
+    <GlobalLayout>
+        <h1>Home page</h1>
+    </GlobalLayout>
+)
 
-export default Home;
+export default HomePageComponent
