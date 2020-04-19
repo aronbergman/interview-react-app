@@ -6,14 +6,20 @@ class Interview extends Component {
     state = {
         interview: [
             {
+                question: 'Какого цвета небо',
                 answers: [
-                    {title: 'Вопрос 1'},
-                    {title: 'Вопрос 2'},
-                    {title: 'Вопрос 3'},
-                    {title: 'Вопрос 4'}
-                ]
+                    {title: 'Черный', id: 1},
+                    {title: 'Синий', id: 2},
+                    {title: 'Белый', id: 3},
+                    {title: 'Красный', id: 4}
+                ],
+                rightAnswerId: 2
             }
         ]
+    }
+
+    onAnswerClickHandler = answerId => {
+        console.log(answerId)
     }
 
     render() {
@@ -21,7 +27,10 @@ class Interview extends Component {
             <div className={classes.Interview}>
                 <div className={classes.ActiveInterview}>
                     <h1>Interview</h1>
-                    <ActiveInterview answers={this.state.interview[0].answers}/>
+                    <ActiveInterview
+                        clicked={this.onAnswerClickHandler}
+                        question={this.state.interview[0].question}
+                        answers={this.state.interview[0].answers}/>
                 </div>
             </div>
         )

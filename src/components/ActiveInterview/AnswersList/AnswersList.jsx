@@ -6,6 +6,7 @@ const AnswersList = props => {
         <ul className={classes.AnswersList}>
             {props.answers.map((answer, index) => {
                 return <li
+                    onClick={() => props.clicked(answer.id)}
                     className={classes.Answer}
                     key={index}>{answer.title}</li>
             })}
