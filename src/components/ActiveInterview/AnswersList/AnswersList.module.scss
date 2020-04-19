@@ -16,3 +16,11 @@
   background-color: rgba(lightgray, .2);
   transition: background-color .3s ease;
 }
+
+.Answer.error {
+  background-color: rgba(coral, .2);
+}
+
+.Answer.success {
+  background-color: rgba(lightgreen, .2);
+}

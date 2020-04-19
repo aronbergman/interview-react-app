@@ -12,11 +12,12 @@ const ActiveInterview = props => {
                 <strong>1. </strong>
                     {props.question}
                 </span>
-                <small>4 из 40</small>
+                <small>{props.answerNumber} из {props.lenght}</small>
             </p>
 
             {/*Варианты ответа*/}
             <AnswersList
+                state={props.state}
                 clicked={props.clicked}
                 answers={props.answers}/>
         </div>
