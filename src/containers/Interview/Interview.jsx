@@ -5,7 +5,7 @@ import ActiveInterview from "../../components/ActiveInterview/ActiveInterview";
 class Interview extends Component {
     state = {
         activeQuestion: 1,
-        answerState: null,
+        answerState: null, // {[id]: 'success' 'error'}
         interview: [
             {
                 id: 1,
@@ -37,6 +37,12 @@ class Interview extends Component {
     }
 
     onAnswerClickHandler = answerId => {
+
+        if (this.state.answerState) {
+            const key = Object.keys(this.state.answerState)[0]
+            if (this.state.answerState[key] === 'success') return
+        }
+
         const question = this.state.interview[this.state.activeQuestion - 1]
         if (question.rightAnswerId === answerId) {
 
