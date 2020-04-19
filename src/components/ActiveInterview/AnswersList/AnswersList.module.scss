@@ -1,0 +1,18 @@
+.AnswersList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Answer {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 7px 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.Answer:hover {
+  background-color: rgba(lightgray, .2);
+  transition: background-color .3s ease;
+}

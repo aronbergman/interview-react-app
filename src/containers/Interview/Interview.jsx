@@ -4,7 +4,16 @@ import ActiveInterview from "../../components/ActiveInterview/ActiveInterview";
 
 class Interview extends Component {
     state = {
-        quiz: []
+        interview: [
+            {
+                answers: [
+                    {title: 'Вопрос 1'},
+                    {title: 'Вопрос 2'},
+                    {title: 'Вопрос 3'},
+                    {title: 'Вопрос 4'}
+                ]
+            }
+        ]
     }
 
     render() {
@@ -12,7 +21,7 @@ class Interview extends Component {
             <div className={classes.Interview}>
                 <div className={classes.ActiveInterview}>
                     <h1>Interview</h1>
-                    <ActiveInterview/>
+                    <ActiveInterview answers={this.state.interview[0].answers}/>
                 </div>
             </div>
         )

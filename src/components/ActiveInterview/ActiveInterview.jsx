@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './ActiveInterview.module.scss'
+import AnswersList from "./AnswersList/AnswersList";
 
 const ActiveInterview = props => {
     return (
@@ -15,12 +16,7 @@ const ActiveInterview = props => {
             </p>
 
             {/*Варианты ответа*/}
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-            </ul>
+            <AnswersList answers={props.answers}/>
         </div>
     )
 }
