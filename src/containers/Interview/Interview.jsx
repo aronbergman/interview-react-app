@@ -75,6 +75,15 @@ class Interview extends Component {
         }
     }
 
+    onRetryInterviewHandler = () => {
+        this.setState({
+            results: {},
+            isFinished: false,
+            activeQuestion: 1,
+            answerState: null,
+        })
+    }
+
     render() {
         return (
             <div className={classes.Interview}>
@@ -83,6 +92,7 @@ class Interview extends Component {
                     {
                         this.state.isFinished
                             ? <FinishInterview
+                                onRetryInterview={this.onRetryInterviewHandler}
                                 interview={this.state.interview}
                                 results={this.state.results}/>
                             : <ActiveInterview

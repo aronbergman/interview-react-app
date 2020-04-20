@@ -31,7 +31,7 @@ const FinishInterview = props => {
             <p>Правильно {successCount} из {props.interview.length}</p>
 
             <div>
-                <button>Повторить</button>
+                <button onClick={props.onRetryInterview}>Повторить</button>
             </div>
         </div>
     )
