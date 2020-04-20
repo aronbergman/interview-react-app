@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './FinishInterview.module.scss'
+import Button from "../UI/Button/Button";
 
 const FinishInterview = props => {
     const successCount = Object.keys(props.results).reduce((total, key) => {
@@ -31,7 +32,17 @@ const FinishInterview = props => {
             <p>Правильно {successCount} из {props.interview.length}</p>
 
             <div>
-                <button onClick={props.onRetryInterview}>Повторить</button>
+                <Button
+                    type="primary"
+                    onClick={props.onRetryInterview}
+                    disabled={false}
+                >Повторить</Button>
+
+                <Button
+                    type="success"
+                    onClick={props.onRetryInterview}
+                    disabled={false}
+                >Список доступных тестов</Button>
             </div>
         </div>
     )
