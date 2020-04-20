@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import classes from './Interview.module.scss'
 import ActiveInterview from "../../components/ActiveInterview/ActiveInterview";
+import FinishInterview from "../../components/FinishInterview/FinishInterview";
 
 class Interview extends Component {
     state = {
+        results: {}, // {[id]: 'success' 'error'}
+        isFinished: false,
         activeQuestion: 1,
         answerState: null, // {[id]: 'success' 'error'}
         interview: [
@@ -44,24 +47,31 @@ class Interview extends Component {
         }
 
         const question = this.state.interview[this.state.activeQuestion - 1]
+        const results = this.state.results
+
         if (question.rightAnswerId === answerId) {
+            if (!results[question.id]) {
+                results[question.id] = 'success'
+            }
 
             this.setState({answerState: {[answerId]: 'success'}})
 
             const timeout = setTimeout(() => {
 
                 if (this.isFinished()) {
-                    console.log('isFinished!')
+                    this.setState({isFinished: true})
                 } else {
                     this.setState({
                         activeQuestion: this.state.activeQuestion + 1,
-                        answerState: {[answerId]: null}
+                        answerState: {[answerId]: null},
+                        results
                     })
                 }
                 clearTimeout(timeout)
             }, 1500)
         } else {
-            this.setState({answerState: {[answerId]: 'error'}})
+            results[question.id] = 'error'
+            this.setState({answerState: {[answerId]: 'error'}, results})
         }
     }
 
@@ -70,13 +80,19 @@ class Interview extends Component {
             <div className={classes.Interview}>
                 <div className={classes.ActiveInterview}>
                     <h1>Interview</h1>
-                    <ActiveInterview
-                        state={this.state.answerState}
-                        lenght={this.state.interview.length}
-                        answerNumber={this.state.activeQuestion}
-                        clicked={this.onAnswerClickHandler}
-                        question={this.state.interview[this.state.activeQuestion - 1].question}
-                        answers={this.state.interview[this.state.activeQuestion - 1].answers}/>
+                    {
+                        this.state.isFinished
+                            ? <FinishInterview
+                                interview={this.state.interview}
+                                results={this.state.results}/>
+                            : <ActiveInterview
+                                state={this.state.answerState}
+                                lenght={this.state.interview.length}
+                                answerNumber={this.state.activeQuestion}
+                                clicked={this.onAnswerClickHandler}
+                                question={this.state.interview[this.state.activeQuestion - 1].question}
+                                answers={this.state.interview[this.state.activeQuestion - 1].answers}/>
+                    }
                 </div>
             </div>
         )
